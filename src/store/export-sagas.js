@@ -1,0 +1,1 @@
+export { contactsSaga } from './contacts'

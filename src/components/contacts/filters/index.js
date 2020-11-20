@@ -1,0 +1,1 @@
+export { FiltersContacts } from './view'
