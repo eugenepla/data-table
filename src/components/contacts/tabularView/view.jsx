@@ -4,89 +4,77 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { fetchContacts } from 'store/contacts/actions'
 import { getContactsArray } from 'store/contacts/selectors'
+import { Avatar } from 'antd'
+import { NATIONALITIES } from 'constants/nationalities'
+import { birthdayConvert } from 'utils/date-convert'
 
 const columns = [
   {
     title: 'Avatar',
-    dataIndex: 'avatar',
+    dataIndex: 'picture',
     fixed: 'left',
     align: 'center',
-    width: 80
+    width: 80,
+    render: (picture) => {
+      return <Avatar size="large" src={picture.large} />
+    },
   },
   {
     title: 'Full name',
-    dataIndex: 'full name',
-    width: 155,
-    sorter: (a, b) => a.age - b.age
+    dataIndex: 'name',
+    width: 250,
+    sorter: (a, b) => a.age - b.age, // TODO
+    render: (name) => {
+      return <a>{name.title} {name.first} {name.last}</a>
+    },
   },
   {
     title: 'Birthday',
-    dataIndex: 'birthday',
+    dataIndex: 'dob',
     width: 250,
+    render: (dob) => birthdayConvert(dob)
   },
   {
     title: 'Email',
     dataIndex: 'email',
-    width: 155
+    width: 250,
+    render: (email) => {
+      return <a>{email}</a>
+    }
   },
   {
     title: 'Phone',
     dataIndex: 'phone',
-    width: 155
+    width: 250,
+    render: (phone) => {
+      return (
+        <a>{phone}</a>
+      )
+    }
   },
   {
     title: 'Location',
     dataIndex: 'location',
-    width: 250
+    width: 250,
+    render: (location) => {
+      return <>
+        <div style={{ fontWeight: 'bold' }}>/{location.country}/</div>
+        {`${location.street.number} 
+          ${location.street.name}, 
+          ${location.city}, 
+          ${location.state} 
+          ${location.postcode}`}
+      </>
+    }
   },
   {
     title: 'Nationality',
-    dataIndex: 'nationality',
-    width: 155,
-    align: 'right'
+    dataIndex: 'nat',
+    width: 200,
+    align: 'right',
+    render: (nat) => { }
   },
 ]
-
-const renderAvatar = () => {
-
-}
-
-const renderFullName = () => {
-
-}
-
-const renderBirthday = () => {
-
-}
-
-const renderEmail = () => {
-
-}
-
-const renderPhone = () => {
-
-}
-
-const renderLocation = () => {
-
-}
-
-const renderNationality = () => {
-
-}
-
-const renderDataSource = (contacts) => {
-  return contacts.map((item, index) => ({
-    avatar: renderAvatar(item.picture.mediums),
-    fullName: renderFullName(item.dob),
-    birthday: renderBirthday(item.dob),
-    email: renderEmail(item.email),
-    phone: renderPhone(item.cell),
-    location: renderLocation(item.location),
-    nationality: renderNationality(item.location.country),
-    key: index
-  }))
-}
 
 const TabularContacts = ({
   fetchContacts,
@@ -101,7 +89,8 @@ const TabularContacts = ({
     <div className={'_container-padding table-container-padding margin-top'}>
       <Table
         columns={columns}
-        // dataSource={renderDataSource}
+        dataSource={contactsArray}
+        scroll={{ x: '80vw' }}
         size="small" />
     </div>
   )
