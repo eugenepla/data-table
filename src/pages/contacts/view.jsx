@@ -13,47 +13,45 @@ import {
   BarsOutlined,
 } from '@ant-design/icons'
 
-import {
-  FiltersContacts,
-  TabularContacts,
-  ContactsStats
-} from 'components'
+import { TabularContacts } from 'components'
 
-const PageContacts = (props) => {
+const PageContacts = () => {
 
   return (
     <div className={'page page--contacts'}>
-      <Row justify="space-between">
-        <Typography.Title level={2} >Contacts</Typography.Title>
-        <Col>
-          <Tooltip title="Update data">
-            <Button
-              //margin-right
-              type="dashed"
-              shape="circle"
-              icon={<ReloadOutlined />}
-              loading={false}
-            />
-          </Tooltip>
-          <div className="ant-btn-group">
-            <Tooltip title="Tiled view">
+      <div className="page__head">
+        <Row justify="space-between">
+          <Typography.Title level={2} >Contacts</Typography.Title>
+          <Col>
+            <Tooltip title="Update data">
               <Button
-                type="primary"
-                icon={<AppstoreOutlined />}
+                //margin-right
+                type="dashed"
+                shape="circle"
+                icon={<ReloadOutlined />}
+                loading={false}
               />
             </Tooltip>
-            <Tooltip title="Tabular view">
-              <Button
-                //type="primary"
-                icon={<BarsOutlined />}
-              />
-            </Tooltip>
-          </div>
-        </Col>
-      </Row >
-      <FiltersContacts />
-      <TabularContacts />
-      <ContactsStats />
+            <div className="ant-btn-group">
+              <Tooltip title="Tiled view">
+                <Button
+                  type="primary"
+                  icon={<AppstoreOutlined />}
+                />
+              </Tooltip>
+              <Tooltip title="Tabular view">
+                <Button
+                  //type="primary"
+                  icon={<BarsOutlined />}
+                />
+              </Tooltip>
+            </div>
+          </Col>
+        </Row >
+      </div>
+      <div className="page__body">
+        <TabularContacts />
+      </div>
     </div>
   )
 }

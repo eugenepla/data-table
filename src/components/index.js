@@ -3,6 +3,6 @@ export { Logo } from './app/logo';
 export { NavBar } from './app/navbar';
 export { Root } from './app/root';
 
-export { TabularContacts } from './contacts/tabularView'
+export { TabularContacts } from './contacts/tabular'
 export { FiltersContacts } from './contacts/filters'
-export { ContactsStats } from './contacts/statistics'
+export { StatsContacts } from './contacts/statistics'

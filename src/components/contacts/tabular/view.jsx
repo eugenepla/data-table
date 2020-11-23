@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
-import { Table } from 'antd'
-import { compose } from 'redux';
-import { connect } from 'react-redux';
+import { Table, Tag } from 'antd'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 import { fetchContacts } from 'store/contacts/actions'
 import { getContactsArray } from 'store/contacts/selectors'
 import { Avatar } from 'antd'
 import { NATIONALITIES } from 'constants/nationalities'
 import { birthdayConvert } from 'utils/date-convert'
+
+import { FiltersContacts, StatsContacts } from 'components'
+import { Copyable } from 'components/contacts/copyable'
 
 const columns = [
   {
@@ -15,6 +18,7 @@ const columns = [
     fixed: 'left',
     align: 'center',
     width: 80,
+    key: 'avatar',
     render: (picture) => {
       return <Avatar size="large" src={picture.large} />
     },
@@ -22,8 +26,14 @@ const columns = [
   {
     title: 'Full name',
     dataIndex: 'name',
-    width: 250,
-    sorter: (a, b) => a.age - b.age, // TODO
+    width: 155,
+    key: 'fullName',
+    sorter: (a, b) => {
+      const fullName = (item) => {
+        return `${item.name.title} ${item.name.first} ${item.name.last}`
+      }
+      return fullName(a).localeCompare(fullName(b))
+    },
     render: (name) => {
       return <a>{name.title} {name.first} {name.last}</a>
     },
@@ -32,23 +42,32 @@ const columns = [
     title: 'Birthday',
     dataIndex: 'dob',
     width: 250,
+    key: 'birthday',
     render: (dob) => birthdayConvert(dob)
   },
   {
     title: 'Email',
     dataIndex: 'email',
     width: 250,
+    key: 'email',
     render: (email) => {
-      return <a>{email}</a>
+      return (
+        <Copyable>
+          <a>{email}</a>
+        </Copyable>
+      )
     }
   },
   {
     title: 'Phone',
     dataIndex: 'phone',
     width: 250,
+    key: 'phone',
     render: (phone) => {
       return (
-        <a>{phone}</a>
+        <Copyable>
+          <a>{phone}</a>
+        </Copyable>
       )
     }
   },
@@ -56,15 +75,18 @@ const columns = [
     title: 'Location',
     dataIndex: 'location',
     width: 250,
+    key: 'location',
     render: (location) => {
-      return <>
-        <div style={{ fontWeight: 'bold' }}>/{location.country}/</div>
-        {`${location.street.number} 
+      return (
+        <Copyable>
+          <div style={{ fontWeight: 600 }}>/{location.country}/</div>
+          {`${location.street.number} 
           ${location.street.name}, 
           ${location.city}, 
           ${location.state} 
           ${location.postcode}`}
-      </>
+        </Copyable>
+      )
     }
   },
   {
@@ -72,7 +94,10 @@ const columns = [
     dataIndex: 'nat',
     width: 200,
     align: 'right',
-    render: (nat) => { }
+    key: 'nationality',
+    render: (nat) => {
+      return <Tag color={NATIONALITIES[nat].color}>{NATIONALITIES[nat].name}</Tag>
+    }
   },
 ]
 
@@ -86,13 +111,13 @@ const TabularContacts = ({
   }, [fetchContacts])
 
   return (
-    <div className={'_container-padding table-container-padding margin-top'}>
-      <Table
-        columns={columns}
-        dataSource={contactsArray}
-        scroll={{ x: '80vw' }}
-        size="small" />
-    </div>
+    <Table
+      title={() => <FiltersContacts />}
+      footer={() => <StatsContacts />}
+      columns={columns}
+      dataSource={contactsArray}
+      scroll={{ x: '80vw' }}
+      size="small" />
   )
 }
 

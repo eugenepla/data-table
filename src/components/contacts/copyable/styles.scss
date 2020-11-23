@@ -1,0 +1,18 @@
+@import "./../../../assets/styles/variables/index";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .icon {
+    font-size: initial;
+    margin-right: 8px;
+  }
+
+  .green-color-icon {
+    color: $color-green
+  }
+  .blue-color-icon {
+    color: $color-blue
+  }
+}

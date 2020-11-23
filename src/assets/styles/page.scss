@@ -37,6 +37,20 @@
 	}
 
 	&--contacts {
+	
+		.card-padding {
+			padding: 10px;
+			background: #fafafa !important;
+		}
 		
+		.margin-top {
+			margin-top: 16px;
+		}
+		
+		.ant-table-title {
+			margin-bottom: 14px !important;
+			padding: 10px !important;
+			background: #fafafa !important;
+		}
 	}
 }

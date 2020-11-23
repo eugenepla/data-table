@@ -5,7 +5,6 @@ import { API } from 'services'
 
 function* loadContacts() {
   const data = yield call(API.contacts.fetchContacts)
-  console.log('data loadContacts', data)
   yield put(saveContacts(data))
 }
 

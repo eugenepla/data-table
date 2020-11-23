@@ -1,1 +1,1 @@
-export { ContactsStats } from './view'
+export { StatsContacts } from './view'
