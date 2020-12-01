@@ -1,1 +1,1 @@
-export { FiltersContacts } from './view'
+export { FiltersContacts } from './container'

@@ -1,1 +1,1 @@
-export { TabularContactsContainer as TabularContacts } from './view.jsx'
+export { TabularContacts } from './container'

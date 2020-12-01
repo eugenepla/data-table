@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react'
 import { Table, Tag } from 'antd'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
-import { fetchContacts } from 'store/contacts/actions'
-import { getContactsArray } from 'store/contacts/selectors'
 import { Avatar } from 'antd'
+
 import { NATIONALITIES } from 'constants/nationalities'
 import { birthdayConvert } from 'utils/date-convert'
-
 import { FiltersContacts, StatsContacts } from 'components'
 import { Copyable } from 'components/contacts/copyable'
 
@@ -103,9 +99,8 @@ const columns = [
 
 const TabularContacts = ({
   fetchContacts,
-  contactsArray
+  contacts
 }) => {
-  console.log('fetchcONTA', contactsArray)
   useEffect(() => {
     fetchContacts()
   }, [fetchContacts])
@@ -115,24 +110,12 @@ const TabularContacts = ({
       title={() => <FiltersContacts />}
       footer={() => <StatsContacts />}
       columns={columns}
-      dataSource={contactsArray}
+      dataSource={contacts}
       scroll={{ x: '80vw' }}
-      size="small" />
+      size="small"
+      rowKey={record => record.id}
+    />
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    contactsArray: getContactsArray(state)
-  };
-};
-
-const mapDispatchToProps = {
-  fetchContacts
-}
-
-const TabularContactsContainer = compose(
-  connect(mapStateToProps, mapDispatchToProps),
-)(TabularContacts);
-
-export { TabularContactsContainer };
+export { TabularContacts as View }
