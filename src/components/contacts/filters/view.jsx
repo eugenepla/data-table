@@ -15,8 +15,7 @@ import { GENDER } from 'constants/gender'
 
 const View = ({
   filters,
-  filterContacts,
-  filteredData
+  filterContacts
 }) => {
   console.log('filters', filters)
   return (
@@ -46,7 +45,10 @@ const View = ({
                   size="large"
                 >
                   {Object.values(GENDER).map((item, index) => (
-                    <Select.Option key={index}>{item}</Select.Option>
+                    <Select.Option
+                      key={index}
+                      value={item.toLowerCase()}
+                    >{item}</Select.Option>
                   ))}
                 </Select>
               </Row>
@@ -64,8 +66,8 @@ const View = ({
                   size="large"
                   placeholder="Nationality"
                 >
-                  {Object.values(NATIONALITIES).map((item, index) => (
-                    <Select.Option key={index} value={item.name}>{item.name}</Select.Option>
+                  {Object.entries(NATIONALITIES).map(([key, value]) => (
+                    <Select.Option key={key} value={key}>{value.name}</Select.Option>
                   ))}
                 </Select>
               </Row>

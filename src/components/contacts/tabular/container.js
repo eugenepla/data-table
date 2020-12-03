@@ -5,7 +5,7 @@ import { fetchContacts } from 'store/contacts/actions'
 import { getContacts, getFilteredContacts } from 'store/contacts/selectors'
 
 const mapStateToProps = (state) => ({
-  contacts: getContacts(state)
+  contacts: getFilteredContacts(state) || getContacts(state)
 })
 
 const mapDispatchToProps = {

@@ -4,13 +4,13 @@ import { createReducer } from 'store/utils'
 const initialState = {
   loading: false,
   contacts: [],
-  filteredContacts: [],
   filters: {
     fullName: '',
     gender: '',
     nationality: [],
     creator: false
-  }
+  },
+  filteredContacts: []
 }
 
 export const reducer = createReducer(initialState, {

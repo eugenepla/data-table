@@ -3,7 +3,7 @@ import { Table, Tag } from 'antd'
 import { Avatar } from 'antd'
 
 import { NATIONALITIES } from 'constants/nationalities'
-import { birthdayConvert } from 'utils/date-convert'
+import { birthdayConvert } from 'utils/convert'
 import { FiltersContacts, StatsContacts } from 'components'
 import { Copyable } from 'components/contacts/copyable'
 

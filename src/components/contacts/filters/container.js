@@ -5,8 +5,7 @@ import { filterContacts } from 'store/contacts/actions'
 import { getFilters, getFilteredContacts } from 'store/contacts/selectors'
 
 const mapStateToProps = (state) => ({
-    filters: getFilters(state),
-    filteredData: getFilteredContacts(state)
+    filters: getFilters(state)
 })
 
 const mapDispatchToProps = {

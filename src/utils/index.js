@@ -7,5 +7,5 @@ export {
 } from './random';
 export {
 	birthdayConvert
-} from './date-convert'
+} from './convert'
 export { redirect } from './redirect';
