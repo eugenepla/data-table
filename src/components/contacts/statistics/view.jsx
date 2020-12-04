@@ -7,7 +7,8 @@ import {
   Statistic
 } from 'antd'
 
-const StatsContacts = () => {
+const View = ({ contacts }) => {
+  console.log('contacts', contacts)
   return (
     <Card bodyStyle={{ padding: "16px" }}>
       <Typography.Title level={3}>Statistic</Typography.Title>
@@ -42,4 +43,4 @@ const StatsContacts = () => {
   )
 }
 
-export { StatsContacts }
+export { View }

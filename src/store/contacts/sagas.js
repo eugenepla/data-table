@@ -12,7 +12,7 @@ function* changeFilters(action) {
   yield put({
     type: (
       action.payload.filters
-        ? OActionTypes.filtersChanged
+        ? OActionTypes.filterContacts
         : OActionTypes.filtersReset
     ),
     payload: action.payload,
@@ -21,11 +21,9 @@ function* changeFilters(action) {
 
 export function* contactsSaga() {
   yield takeEvery(OActionTypes.fetchContacts, fetchContacts)
-}
-
-export function* filtersWatcher() {
   yield takeLatest(OActionTypes.saveFilteredContacts, changeFilters)
 }
+
 
 
 

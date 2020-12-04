@@ -21,7 +21,6 @@ export const reducer = createReducer(initialState, {
     return { ...state, contacts: action.payload.data, loading: false };
   },
   [OActionTypes.filterContacts](state, action) {
-    console.log('action!!!!!!', action)
     return { ...state, filters: action.payload, loading: true }
   },
   [OActionTypes.saveFilteredContacts](state, action) {

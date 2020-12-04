@@ -1,1 +1,1 @@
-export { StatsContacts } from './view'
+export { StatsContacts } from './container'

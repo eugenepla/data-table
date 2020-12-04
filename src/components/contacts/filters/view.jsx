@@ -17,12 +17,11 @@ const View = ({
   filters,
   filterContacts
 }) => {
-  console.log('filters', filters)
   return (
     <Card bodyStyle={{ padding: "16px" }}>
       <Row align="middle">
         <Col className='_flex-grow'>
-          <Row gutter={[12, 0, 12, 12]} align="middle">
+          <Row gutter={[12, 12, 12, 12]} align="middle">
             <Col xs={24} lg={11}>
               <Row>
                 <Input.Search
@@ -34,7 +33,7 @@ const View = ({
               </Row>
             </Col>
             <Col xs={24} sm={10} lg={4}>
-              <Row>
+              <Row align="middle">
                 <Select
                   onChange={value => filterContacts({ ...filters, gender: value }, console.log('gender', filters))}
                   value={filters?.gender}
@@ -54,7 +53,7 @@ const View = ({
               </Row>
             </Col>
             <Col xs={24} sm={14} lg={5}>
-              <Row>
+              <Row align="middle">
                 <Select
                   onChange={value => filterContacts({ ...filters, nationality: value }, console.log('nationality', filters))}
                   value={filters?.nationality}

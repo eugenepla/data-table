@@ -8,10 +8,10 @@
 	margin: 0;
 	padding: 0;
 
+
 	&__head {
 		position: relative;
 		display: block;
-		margin: 0 0 20px;
 		padding: 0;
 	}
 
@@ -37,16 +37,6 @@
 	}
 
 	&--contacts {
-	
-		.card-padding {
-			padding: 10px;
-			background: #fafafa !important;
-		}
-		
-		.margin-top {
-			margin-top: 16px;
-		}
-		
 		.ant-table-title {
 			margin-bottom: 14px !important;
 			padding: 10px !important;
