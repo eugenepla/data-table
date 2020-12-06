@@ -21,18 +21,17 @@ export const reducer = createReducer(initialState, {
     return { ...state, contacts: action.payload.data, loading: false };
   },
   [OActionTypes.filterContacts](state, action) {
+    console.log('action filterContacts', action)
     return { ...state, filters: action.payload, loading: true }
   },
   [OActionTypes.saveFilteredContacts](state, action) {
-    return { ...state, filteredContacts: action.payload, loading: false }
+    console.log('action saveFilteredContacts', action)
+    return { ...state, filteredContacts: action.payload.data, loading: false }
   },
   [OActionTypes.filtersReset](state) {
     return { ...state, filters: initialState.filters };
+  },
+  [OActionTypes.filtersReset](state) {
+    return { ...state, loading: false };
   }
 });
-
-/*
-[OActionTypes.fetchContactsFailed](state) {
-    return { ...state, loading: false };
-  },
-  */

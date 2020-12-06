@@ -99,7 +99,8 @@ const columns = [
 
 const TabularContacts = ({
   fetchContacts,
-  contacts
+  contacts,
+  loading
 }) => {
   useEffect(() => {
     fetchContacts()

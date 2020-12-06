@@ -1,2 +1,5 @@
 export { reducer } from './reducer'
-export { contactsSaga } from './sagas'
+export {
+    contactsSaga,
+    filtersSaga
+} from './sagas'

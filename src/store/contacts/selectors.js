@@ -37,6 +37,13 @@ export const getFilteredContacts = createSelector(
       filtered = filtered.filter(item => item.creator === filters.creator)
     }
 
+
+
     return filtered
   }
+)
+
+export const selectLoading = createSelector(
+  [_getContactsState],
+  (contacts) => contacts.loading
 )

@@ -1,1 +1,4 @@
-export { contactsSaga } from './contacts'
+export {
+    contactsSaga,
+    filtersSaga
+} from './contacts'

@@ -15,7 +15,8 @@ import { GENDER } from 'constants/gender'
 
 const View = ({
   filters,
-  filterContacts
+  filterContacts,
+  loading
 }) => {
   return (
     <Card bodyStyle={{ padding: "16px" }}>
@@ -25,6 +26,7 @@ const View = ({
             <Col xs={24} lg={11}>
               <Row>
                 <Input.Search
+                  //loading={loading}
                   onChange={e => filterContacts({ ...filters, fullName: e.target.value }, console.log('fullName', filters))}
                   value={filters?.fullName}
                   placeholder="Search by full name"
@@ -35,6 +37,7 @@ const View = ({
             <Col xs={24} sm={10} lg={4}>
               <Row align="middle">
                 <Select
+                  //loading={loading}
                   onChange={value => filterContacts({ ...filters, gender: value }, console.log('gender', filters))}
                   value={filters?.gender}
                   id="genderSelect"
@@ -46,7 +49,7 @@ const View = ({
                   {Object.values(GENDER).map((item, index) => (
                     <Select.Option
                       key={index}
-                      value={item.toLowerCase()}
+                      value={item}
                     >{item}</Select.Option>
                   ))}
                 </Select>
@@ -55,6 +58,7 @@ const View = ({
             <Col xs={24} sm={14} lg={5}>
               <Row align="middle">
                 <Select
+                  //loading={loading}
                   onChange={value => filterContacts({ ...filters, nationality: value }, console.log('nationality', filters))}
                   value={filters?.nationality}
                   id="natSelect"
@@ -74,6 +78,7 @@ const View = ({
             <Col xs={24} sm={6} lg={4}>
               <Row align="middle">
                 <Checkbox
+                  //disabled={loading}
                   onChange={(e) => filterContacts({ ...filters, creator: e.target.checked })}>
                   I am creator
 							  	</Checkbox>
@@ -83,7 +88,9 @@ const View = ({
         </Col>
         <Col className={'_flex-noshrink'}>
           <Row align="middle" className={'clear-button-row'}>
-            <Button type="link"
+            <Button
+              type="link"
+              //disabled={loading}
               onClick={() => filterContacts(null)}>
               <CloseOutlined /> Clear
 						</Button>
