@@ -5,10 +5,12 @@ export const OActionTypes = {
   saveContacts: `${PREFIX}SAVE_CONTACTS`,
 
   filterContacts: `${PREFIX}FILTER_CONTACTS`,
-  saveFilteredContacts: `${PREFIX}SAVE_FILTERED_CONTACTS`,
+  saveFiltersContacts: `${PREFIX}SAVE_FILTERS_CONTACTS`,
   filtersReset: `${PREFIX}FILTERS_RESET`,
 
   showLoader: `${PREFIX}SHOW_LOADER`,
-  hideLoader: `${PREFIX}HIDE_LOADER`
+  hideLoader: `${PREFIX}HIDE_LOADER`,
+
+  changeViewContacts: `${PREFIX}CHANGE_VIEW_CONTACTS`
 }
 

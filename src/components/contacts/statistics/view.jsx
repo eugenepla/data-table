@@ -99,7 +99,7 @@ const View = ({ contacts, loading }) => {
             </Col>
             <Col span={24}>
               <Typography.Text mark>
-                {predominate}
+                {predominate} predominate
               </Typography.Text>
             </Col>
           </Row>

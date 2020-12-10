@@ -8,4 +8,7 @@ export {
 export {
 	birthdayConvert
 } from './convert'
+export {
+	getFullName
+} from './contacts'
 export { redirect } from './redirect';

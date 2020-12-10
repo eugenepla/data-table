@@ -17,19 +17,10 @@ const View = () => {
 						<Col className={'_flex-grow'}>
 							<NavBar />
 						</Col>
-						<Col>
-							<Button
-								type={'link'}
-								htmlType={'button'}
-								icon={<LoginOutlined />}
-							>
-								Sign In
-							</Button>
-						</Col>
 					</Row>
 				</Col>
 			</Row>
-		</div>
+		</div >
 	);
 };
 

@@ -2,11 +2,11 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { View } from './view'
 import { filterContacts } from 'store/contacts/actions'
-import { getFilters, selectLoading } from 'store/contacts/selectors'
+import { getFilters, loadingSelect } from 'store/contacts/selectors'
 
 const mapStateToProps = (state) => ({
     filters: getFilters(state),
-    loading: selectLoading(state)
+    loading: loadingSelect(state)
 })
 
 const mapDispatchToProps = {

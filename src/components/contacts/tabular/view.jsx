@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+// eslint-disable jsx-a11y/anchor-is-valid 
+import React from 'react'
 import { Table, Tag } from 'antd'
 import { Avatar } from 'antd'
 
 import { NATIONALITIES } from 'constants/nationalities'
 import { birthdayConvert } from 'utils/convert'
 import { FiltersContacts, StatsContacts } from 'components'
-import { Copyable } from 'components/contacts/copyable'
+import { Copyable } from 'components/common/copyable'
 
 const columns = [
   {
@@ -31,7 +32,7 @@ const columns = [
       return fullName(a).localeCompare(fullName(b))
     },
     render: (name) => {
-      return <a>{name.title} {name.first} {name.last}</a>
+      return <a href='/'>{name.title} {name.first} {name.last}</a>
     },
   },
   {
@@ -49,7 +50,7 @@ const columns = [
     render: (email) => {
       return (
         <Copyable>
-          <a>{email}</a>
+          <a href='/'>{email}</a>
         </Copyable>
       )
     }
@@ -62,7 +63,7 @@ const columns = [
     render: (phone) => {
       return (
         <Copyable>
-          <a>{phone}</a>
+          <a href='/'>{phone}</a>
         </Copyable>
       )
     }
@@ -76,7 +77,7 @@ const columns = [
       return (
         <Copyable>
           <div style={{ fontWeight: 600 }}>/{location.country}/</div>
-          {`${location.street.number} 
+          {`${location.street.number}
           ${location.street.name}, 
           ${location.city}, 
           ${location.state} 
@@ -94,18 +95,12 @@ const columns = [
     render: (nat) => {
       return <Tag color={NATIONALITIES[nat].color}>{NATIONALITIES[nat].name}</Tag>
     }
-  },
+  }
 ]
 
 const TabularContacts = ({
-  fetchContacts,
-  contacts,
-  loading
+  contacts
 }) => {
-  useEffect(() => {
-    fetchContacts()
-  }, [fetchContacts])
-
   return (
     <Table
       title={() => <FiltersContacts />}

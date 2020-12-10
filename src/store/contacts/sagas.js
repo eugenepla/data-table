@@ -1,6 +1,6 @@
 import { call, takeEvery, takeLatest, put } from 'redux-saga/effects'
 import { OActionTypes } from './types'
-import { saveContacts } from './actions'
+import { saveContacts, saveFiltersContacts } from './actions'
 import { API } from 'services'
 
 function* fetchContacts() {
@@ -18,14 +18,15 @@ export function* contactsSaga() {
   yield takeEvery(OActionTypes.fetchContacts, fetchContacts)
 }
 
-function* changeFilters(action) {
-  console.log('dsasaddad')
-  yield put({ type: OActionTypes.saveFilteredContacts, payload: action.payload })
+function* changeFilters(payload) {
+  console.log('changeFilters')
+  yield put({ type: OActionTypes.saveFilteredContacts, payload }) //
 }
+
 
 export function* filtersSaga() {
   console.log('filtersSaga')
-  yield takeLatest(OActionTypes.saveFilteredContacts, changeFilters)
+  //yield takeLatest(OActionTypes.saveFilteredContacts, changeFilters)
 }
 
 

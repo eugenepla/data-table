@@ -14,8 +14,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {}
 
-const TabularContacts = compose(
+const TiledContacts = compose(
   connect(mapStateToProps, mapDispatchToProps),
 )(View);
 
-export { TabularContacts }
+export { TiledContacts }

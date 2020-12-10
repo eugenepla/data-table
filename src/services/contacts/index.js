@@ -1,5 +1,5 @@
 async function fetchContacts() {
-  const response = await fetch(`https://randomuser.me/api/?results=40`, {  //TODO
+  const response = await fetch(`https://randomuser.me/api/?results=200`, {  //TODO
     method: 'GET'
   })
   const jsonResponse = await response.json()

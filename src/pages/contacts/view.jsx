@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Button,
   Row,
@@ -13,9 +13,22 @@ import {
   BarsOutlined,
 } from '@ant-design/icons'
 
-import { TabularContacts } from 'components'
+import { TabularContacts } from 'components/contacts/tabular'
+import { TiledContacts } from 'components/contacts/tiled'
 
-const PageContacts = () => {
+const View = ({
+  view,
+  fetchContacts,
+  changeViewContacts
+}) => {
+
+  useEffect(() => {
+    fetchContacts(40)
+  }, [fetchContacts])
+
+  const reloadContacts = () => {
+    alert('will be soon')
+  }
 
   return (
     <div className={'page page--contacts'}>
@@ -25,32 +38,34 @@ const PageContacts = () => {
           <Col>
             <Tooltip title="Update data">
               <Button
-                style={{ marginRight: '8px' }}
+                onClick={() => reloadContacts()}
+                style={{ marginRight: '12px' }}
                 type="dashed"
                 shape="circle"
                 icon={<ReloadOutlined />}
-                loading={false}
               />
             </Tooltip>
             <div className="ant-btn-group">
               <Tooltip title="Tiled view">
                 <Button
-                  type="primary"
+                  onClick={() => changeViewContacts('tiledView')}
+                  type={view === "tiledView" ? "primary" : "default"}
                   icon={<AppstoreOutlined />}
                 />
               </Tooltip>
               <Tooltip title="Tabular view">
                 <Button
-                  //type="primary"
+                  onClick={() => changeViewContacts('tabularView')}
+                  type={view === "tabularView" ? "primary" : "default"}
                   icon={<BarsOutlined />}
                 />
               </Tooltip>
             </div>
           </Col>
-        </Row >
+        </Row>
       </div>
       <div className="page__body">
-        <TabularContacts />
+        {view === 'tabularView' ? <TabularContacts /> : <TiledContacts />}
       </div>
       <div className='spin'>
         <Spin />
@@ -59,4 +74,4 @@ const PageContacts = () => {
   )
 }
 
-export { PageContacts }
+export { View }

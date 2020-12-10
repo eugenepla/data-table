@@ -1,21 +1,29 @@
 import { OActionTypes } from './types';
-import { createAction } from 'store/utils'
 
 export const fetchContacts = () => ({
   type: OActionTypes.fetchContacts
 })
 
-export const saveContacts = (action) => ({
+export const saveContacts = (payload) => ({
   type: OActionTypes.saveContacts,
-  payload: action
+  payload
 })
 
-export const filterContacts = (filter) => ({
+export const filterContacts = (payload) => ({
   type: OActionTypes.filterContacts,
-  payload: filter
+  payload
 })
 
-export const saveFilteredContacts = (action) => ({
-  type: OActionTypes.saveFilteredContacts,
-  payload: action
+export const saveFiltersContacts = (payload) => ({
+  type: OActionTypes.saveFiltersContacts,
+  payload
 })
+
+export const changeViewContacts = (payload) => ({
+  type: OActionTypes.changeViewContacts,
+  payload
+})
+
+//export function updateContacts(seed, size) {
+  //return { type: USER_CONTACTS_UPDATE, seed, size };
+//}

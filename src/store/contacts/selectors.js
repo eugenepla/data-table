@@ -1,9 +1,5 @@
 import { createSelector } from 'reselect';
 
-export function getFullName(title, first, last) {
-  return `${title} ${first} ${last}`;
-}
-
 const _getContactsState = (state) => state.contacts;
 
 export const getContacts = createSelector(
@@ -37,13 +33,17 @@ export const getFilteredContacts = createSelector(
       filtered = filtered.filter(item => item.creator === filters.creator)
     }
 
-
-
     return filtered
   }
 )
 
-export const selectLoading = createSelector(
+export const getContactsView = createSelector(
+  [_getContactsState],
+  (contacts) => contacts.view
+)
+
+export const loadingSelect = createSelector(
   [_getContactsState],
   (contacts) => contacts.loading
 )
+

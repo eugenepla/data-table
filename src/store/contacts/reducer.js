@@ -10,7 +10,8 @@ const initialState = {
     nationality: [],
     creator: false
   },
-  filteredContacts: []
+  filteredContacts: [],
+  view: "tiledView"
 }
 
 export const reducer = createReducer(initialState, {
@@ -22,16 +23,17 @@ export const reducer = createReducer(initialState, {
   },
   [OActionTypes.filterContacts](state, action) {
     console.log('action filterContacts', action)
-    return { ...state, filters: action.payload, loading: true }
+    return { ...state, filters: action.payload }
   },
   [OActionTypes.saveFilteredContacts](state, action) {
     console.log('action saveFilteredContacts', action)
-    return { ...state, filteredContacts: action.payload.data, loading: false }
+    return { ...state, filteredContacts: action.payload }
   },
   [OActionTypes.filtersReset](state) {
     return { ...state, filters: initialState.filters };
   },
-  [OActionTypes.filtersReset](state) {
-    return { ...state, loading: false };
+  [OActionTypes.changeViewContacts](state, action) {
+    console.log('action', action)
+    return { ...state, view: action.payload }
   }
 });
