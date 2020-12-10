@@ -6,7 +6,6 @@ import { StatsContacts } from 'components/contacts/statistics'
 import { Copyable } from 'components/common/copyable'
 
 const CardContact = ({ contact }) => {
-  console.log('contact!', contact?.gender)
   return (
     <Card
       hoverable

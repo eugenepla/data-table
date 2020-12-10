@@ -1,6 +1,6 @@
-import { call, takeEvery, takeLatest, put } from 'redux-saga/effects'
+import { call, takeEvery, put } from 'redux-saga/effects'
 import { OActionTypes } from './types'
-import { saveContacts, saveFiltersContacts } from './actions'
+import { saveContacts } from './actions'
 import { API } from 'services'
 
 function* fetchContacts() {
