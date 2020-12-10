@@ -108,7 +108,7 @@ const TabularContacts = ({
       columns={columns}
       dataSource={contacts}
       scroll={{ x: '80vw' }}
-      size="small"
+      size="medium"
       rowKey={record => record.id}
     />
   )
