@@ -27,7 +27,7 @@ const View = ({
   }, [fetchContacts])
 
   const reloadContacts = () => {
-    alert('will be soon')
+    alert('TODO')
   }
 
   return (
@@ -69,6 +69,7 @@ const View = ({
       </div>
       <div className='spin'>
         <Spin />
+        TODO
       </div>
     </div>
   )

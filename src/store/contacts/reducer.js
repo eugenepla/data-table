@@ -11,7 +11,7 @@ const initialState = {
     creator: false
   },
   filteredContacts: [],
-  view: "tiledView"
+  view: "tabularView"
 }
 
 export const reducer = createReducer(initialState, {
