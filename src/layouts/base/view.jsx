@@ -12,9 +12,9 @@ const View = React.memo((props) => {
 
 	return (
 		<Layout className={'layout layout--base'}>
-			<Layout.Header className={'layout__header'}><Header/></Layout.Header>
+			<Layout.Header className={'layout__header'}><Header /></Layout.Header>
 			<Layout.Content className={'layout__content'} style={style.content}>{children}</Layout.Content>
-			<Layout.Footer className={'layout__footer'}>{currentYear} &copy; {APP_NAME}</Layout.Footer>
+			<Layout.Footer className={'layout__footer'}>{APP_NAME}</Layout.Footer>
 		</Layout>
 	);
 });
